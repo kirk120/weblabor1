@@ -1,0 +1,80 @@
+/* Alap stílusok */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    color: #333;
+    line-height: 1.6;
+  }
+  
+  .navbar {
+    margin-bottom: 30px;
+  }
+  
+  .navbar-brand {
+    font-weight: bold;
+    font-size: 1.5rem;
+  }
+  
+  footer {
+    background-color: #343a40;
+    color: white;
+    padding: 10px 0;
+  }
+  
+  footer p {
+    margin: 0;
+  }
+  
+  /* Képek megjelenése */
+  .img-fluid {
+    max-width: 100%;
+    height: auto;
+  }
+  
+  /* Formázás */
+  form .form-control {
+    border-radius: 0;
+    border: 2px solid #ccc;
+    transition: border-color 0.3s ease;
+  }
+  
+  form .form-control:focus {
+    border-color: #007bff;
+  }
+  
+  form .btn-primary {
+    background-color: #007bff;
+    border: none;
+    padding: 10px 20px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  form .btn-primary:hover {
+    background-color: #0056b3;
+  }
+  
+  .alert {
+    margin-top: 20px;
+  }
+  
+  .alert-success {
+    background-color: #28a745;
+    color: white;
+  }
+  
+  .alert-danger {
+    background-color: #dc3545;
+    color: white;
+  }
+  
+  /* Egyedi margó a szövegekhez */
+  .mt-5 {
+    margin-top: 3rem;
+  }
+  
+  .mt-4 {
+    margin-top: 2rem;
+  }
+  
