@@ -42,6 +42,14 @@
         <input type="email" class="form-control" id="email" required>
       </div>
       <div class="mb-3">
+        <label for="marka" class="form-label">Motor gyártója</label>
+        <input type="text" class="form-control" id="marka" required minlength="10">
+      </div>
+      <div class="mb-3">
+        <label for="tipus" class="form-label">Motor típusa</label>
+        <input type="text" class="form-control" id="tipus" required minlength="10">
+      </div>
+      <div class="mb-3">
         <label for="message" class="form-label">Üzenet</label>
         <textarea class="form-control" id="message" rows="4" required minlength="10"></textarea>
       </div>
@@ -51,25 +59,62 @@
     <div id="formMessage" class="mt-4"></div>
   </div>
 
-  <footer class="bg-dark text-white text-center p-3 mt-5">
-    <p>&copy; 2025 Túramotorozás. Minden jog fenntartva.</p>
+  <footer class="bg-dark text-center text-white py-3">
+    <p>&copy; 2025 weblabor1 beadandó feladat</p>
+    <p>&copy; GF8NSN - Vágány Zoltán</p>
   </footer>
 
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
   <script>
     document.getElementById('contactForm').addEventListener('submit', function(event) {
       event.preventDefault();
-      
-      const name = document.getElementById('name').value;
-      const email = document.getElementById('email').value;
-      const message = document.getElementById('message').value;
-      
-      if (name && email && message) {
-        document.getElementById('formMessage').innerHTML = '<div class="alert alert-success" role="alert">Köszönjük, hogy felvetted velünk a kapcsolatot! Hamarosan válaszolunk.</div>';
+  
+      const name = document.getElementById('name');
+      const email = document.getElementById('email');
+      const marka = document.getElementById('marka');
+      const tipus = document.getElementById('tipus');
+      const message = document.getElementById('message');
+      const formMessage = document.getElementById('formMessage');
+  
+      // Email validálás regex
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  
+      let errors = [];
+  
+      // Név
+      if (name.value.trim().length < 10) {
+        errors.push("A név legalább 10 karakter hosszú legyen.");
+      }
+  
+      // Email
+      if (!emailRegex.test(email.value.trim())) {
+        errors.push("Adj meg egy érvényes email címet.");
+      }
+  
+      // Márka
+      if (marka.value.trim().length < 10) {
+        errors.push("A motor gyártója legalább 10 karakter hosszú legyen.");
+      }
+  
+      // Típus
+      if (tipus.value.trim().length < 10) {
+        errors.push("A motor típusa legalább 10 karakter hosszú legyen.");
+      }
+  
+      // Üzenet
+      if (message.value.trim().length < 10) {
+        errors.push("Az üzenet legalább 10 karakter hosszú legyen.");
+      }
+  
+      // Hibák megjelenítése
+      if (errors.length > 0) {
+        formMessage.innerHTML = `<div class="alert alert-danger" role="alert">${errors.join('<br>')}</div>`;
       } else {
-        document.getElementById('formMessage').innerHTML = '<div class="alert alert-danger" role="alert">Kérlek, töltsd ki az összes mezőt megfelelően!</div>';
+        formMessage.innerHTML = `<div class="alert alert-success" role="alert">Köszönjük, hogy felvetted velünk a kapcsolatot! Hamarosan válaszolunk.</div>`;
+        // Űrlap resetelése (ha szükséges)
+        document.getElementById('contactForm').reset();
       }
     });
   </script>
+  
 </body>
 </html>
